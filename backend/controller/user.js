@@ -10,9 +10,8 @@ const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/sendMail");
 
 router.post("/create-user", upload.single("file"), async (req, res, next) => {
-  const { name, email, password } = req.body;
-
   try {
+    const { name, email, password } = req.body;
     const userEmail = await User.findOne({ email });
     if (userEmail) {
       const filename = req.file.filename;
@@ -90,7 +89,9 @@ router.post(
         password,
       });
 
-      res.status(201).json({ success: true, message: "User activated successfully" });
+      res
+        .status(201)
+        .json({ success: true, message: "User activated successfully" });
     } catch (error) {
       return next(new ErrorHandler(error.message, 400));
     }
