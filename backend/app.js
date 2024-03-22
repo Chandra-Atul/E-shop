@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 const user = require("./controller/user");
 app.use("/api/v2/user", user);
 
-// it's for Errorahndling
+// it's for ErroraHandling
 app.use(ErrorHandler);
 
 module.exports = app;

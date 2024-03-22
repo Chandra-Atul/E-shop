@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { RxAvatar } from "react-icons/rx";
 import axios from "axios";
 import { server } from "../../server";
@@ -12,7 +12,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [visible, setvisible] = useState("");
   const [avatar, setAvatar] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
@@ -21,7 +21,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const config = { headers: { "content-Type": "multipart/form-data" } };
+    const config = { headers: { "Content-Type": "multipart/form-data" } };
 
     const newForm = new FormData();
 
@@ -29,14 +29,16 @@ const Signup = () => {
     newForm.append("name", name);
     newForm.append("email", email);
     newForm.append("password", password);
+
+    console.log(`new user is created`);
+
     axios
       .post(`${server}/user/create-user`, newForm, config)
       .then((res) => {
-        alert(res.message);
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
-        console.log(`out signup page`);
       });
   };
 
