@@ -1,4 +1,6 @@
 import LoginPage from "../src/pages/LoginPage";
 import SignupPage from "../src/pages/SignupPages";
 import ActivationPage from "../src/pages/ActivationPage";
-export { LoginPage, SignupPage, ActivationPage };
+import HomePage from "../src/pages/Homepage.jsx";
+
+export { LoginPage, SignupPage, ActivationPage, HomePage };
