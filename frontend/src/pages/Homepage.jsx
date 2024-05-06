@@ -3,7 +3,7 @@ import Header from "../components/Layout/Header.jsx";
 
 const Homepage = () => {
   return <div>
-   <Header/>
+   <Header activeHeading={1}/>
   </div>;
 };
 
